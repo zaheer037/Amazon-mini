@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
 import './App.css'; // Make sure this is imported to apply CSS
 import Swal from 'sweetalert2';
