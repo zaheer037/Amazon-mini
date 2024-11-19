@@ -3,9 +3,8 @@ import axios from 'axios';
 import './App.css'; // Make sure this is imported to apply CSS
 import Swal from 'sweetalert2';
 import Footer from './Pages/Footer';
-import {TopHeader,Header} from './Pages/TopHeader';
-import Login from './Components/Login/Login';
-import Register from './Components/Register/Register';
+import { TopHeader, Header } from './Pages/TopHeader';
+
 function App() {
   const [categories, setCategories] = useState([
     { id: 1, name: 'Electronics' },
@@ -13,7 +12,7 @@ function App() {
     { id: 3, name: 'Home & Kitchen' },
     { id: 4, name: 'Beauty & Personal Care' }
   ]);
-  
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [addItemForm, setAddItemForm] = useState(false);
   const [itemName, setItemName] = useState('');
@@ -143,8 +142,48 @@ function App() {
       }, 3000);
     }
   };
-  
- 
+
+  const handleRegisterSubmit = async () => {
+    try {
+        const response = await axios.post('http://localhost:4000/register', {
+            username,
+            email,
+            phone,
+            password
+        });
+        setRegisterForm(false);
+        setLoginForm(true);
+    } catch (error) {
+        console.error('Error during registration:', error);
+    }
+};
+
+  const handleLoginSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:4000/login', {
+        email,
+        password
+      });
+      setCurrentUser(response.data.user);
+      setLoggedIn(true);
+      setLoginForm(false);
+    } catch (error) {
+      console.error('Error during login:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: 'Incorrect username or password. Please try again.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        background: '#f2f2f2',
+        backdrop: `rgba(0, 0, 0, 0.4)`,
+        customClass: {
+          popup: 'styled-alert-popup', // Optional: Add custom styles using CSS
+        },
+      });
+    }
+  };
+
 
   const handleLogout = () => {
     setLoggedIn(false);
@@ -165,12 +204,12 @@ function App() {
   return (
     <div className="app">
       <TopHeader
-       onHomeClick={handleHomeClick}
-       onRegisterClick={() => setRegisterForm(true)}
-       isLoggedIn={loggedIn}
-       onLogout={handleLogout}
-       onLoginClick={() => setLoginForm(true)}
-       />
+        onHomeClick={handleHomeClick}
+        onRegisterClick={() => setRegisterForm(true)}
+        isLoggedIn={loggedIn}
+        onLogout={handleLogout}
+        onLoginClick={() => setLoginForm(true)}
+      />
       <Header
         onHomeClick={handleHomeClick}
         onRegisterClick={() => setRegisterForm(true)}
@@ -182,9 +221,37 @@ function App() {
         <h2>Welcome to Mini Amazon</h2>
         <p>A mini store where you can add any item details from any website and can buy here</p>
         {registerForm ? (
-          <Register/>
+          <div className="form-container">
+            <h2>Register</h2>
+            <form>
+              <label>Name:</label>
+              <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <br />
+              <label>Email:</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <br />
+              <label>Phone:</label>
+              <input type="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <br />
+              <label>Password:</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <br />
+              <button type="button" onClick={handleRegisterSubmit}>Register</button>
+            </form>
+          </div>
         ) : loginForm ? (
-          <Login/>
+          <div className="form-container">
+            <h2>Login</h2>
+            <form>
+              <label>Email:</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <br />
+              <label>Password:</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <br />
+              <button type="button" onClick={handleLoginSubmit}>Login</button>
+            </form>
+          </div>
         ) : loggedIn ? (
           <div className="category-container">
             <h2>Categories</h2>
@@ -243,7 +310,7 @@ function App() {
                         </div>
                       ) : (
                         <div>
-                          <span style={{padding:"20px"}}><button onClick={() => handleEditItem(index)}>Edit</button></span>
+                          <span style={{ padding: "20px" }}><button onClick={() => handleEditItem(index)}>Edit</button></span>
                           <button onClick={() => handleAddToCart(item)}>Add to Cart</button>
                         </div>
                       )}
@@ -255,11 +322,11 @@ function App() {
                     <h2>Cart</h2>
                     <ol>
                       {cartItems.map((item, index) => (
-                        <li key={index} style={{listStyle:"none"}}>
+                        <li key={index} style={{ listStyle: "none" }}>
                           <img src={item.image} alt={item.name} />
                           <p>{item.name}</p>
                           <p>Price: {item.price}</p>
-                          <hr/>
+                          <hr />
                         </li>
                       ))}
                     </ol>
@@ -274,7 +341,7 @@ function App() {
           </div>
         ) : null}
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
