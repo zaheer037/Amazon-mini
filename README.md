@@ -74,6 +74,7 @@ amazon-clone-app/
 │   ├── package.json   
 ```  
 
+
 ## Future Improvements  
 - Add product reviews and ratings.  
 - Integrate real-time chat support.  
