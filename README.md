@@ -1,4 +1,3 @@
-
 # Amazon Clone App  
 
 An e-commerce web application replicating the core functionalities of Amazon, built with modern web technologies. The application allows users to browse products, add items to their cart, and proceed to checkout.
@@ -32,7 +31,7 @@ An e-commerce web application replicating the core functionalities of Amazon, bu
    ```bash  
    git clone https://github.com/zaheer037/Amazon-mini.git  
    cd Amazon-mini
-   ```  
+```  
 
 2. **Install dependencies:**  
    For the frontend:  
@@ -63,17 +62,16 @@ An e-commerce web application replicating the core functionalities of Amazon, bu
 
 ```  
 amazon-clone-app/  
-├── client/         # Frontend code  
+├── backend/         # Backend code  
+│   ├── server.js  
+│   ├── package.json  
+├── frontend/        # Frontend code  
 │   ├── public/  
 │   ├── src/  
-│       ├── components/  
-│       ├── pages/  
-│       ├── styles/  
-├── server/         # Backend code  
-│   ├── models/  
-│   ├── routes/  
-│   ├── controllers/  
-│   ├── utils/  
+│       ├── Pages/  
+│           ├── Footer.jsx  
+│           ├── TopHeader.jsx  
+│   ├── package.json   
 ```  
 
 ## Future Improvements  
@@ -86,7 +84,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Author  
 **Zaheer**  
-Feel free to connect with me on [LinkedIn](https://www.linkedin.com).  
+Feel free to connect with me on [LinkedIn](www.linkedin.com/in/zaheer-maseed).  
 
 ---
 
