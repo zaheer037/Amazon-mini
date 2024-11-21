@@ -85,7 +85,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Author  
 **Zaheer**  
-Feel free to connect with me on [LinkedIn](www.linkedin.com/in/zaheer-maseed).  
+Feel free to connect with me on [LinkedIn](www.linkedin.com/in/zaheer-maseed). 
 
 ---
 
