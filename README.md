@@ -63,18 +63,18 @@ An e-commerce web application replicating the core functionalities of Amazon, bu
 
 ```  
 amazon-clone-app/  
-├── client/         # Frontend code  
+├── backend/         # Backend code  
+│   ├── server.js  
+│   ├── package.json  
+├── frontend/        # Frontend code  
 │   ├── public/  
 │   ├── src/  
-│       ├── components/  
-│       ├── pages/  
-│       ├── styles/  
-├── server/         # Backend code  
-│   ├── models/  
-│   ├── routes/  
-│   ├── controllers/  
-│   ├── utils/  
+│       ├── Pages/  
+│           ├── Footer.jsx  
+│           ├── TopHeader.jsx  
+│   ├── package.json   
 ```  
+
 
 ## Future Improvements  
 - Add product reviews and ratings.  
