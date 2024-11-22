@@ -251,9 +251,9 @@ button:hover {
 }
 
 .order-message {
-  background-color: #f0f8ff; /* Light blue background */
-  border: 1px solid #d1e7dd; /* Light green border */
-  color: #0f5132; /* Dark green text */
+  background-color: #f0f8ff;
+  border: 1px solid #d1e7dd;
+  color: #0f5132; 
   padding: 20px;
   border-radius: 5px;
   text-align: center;
