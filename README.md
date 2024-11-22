@@ -7,7 +7,7 @@ An e-commerce web application replicating the core functionalities of Amazon, bu
 - Product listing and categorization.  
 - Add to cart and manage cart items.  
 - Responsive design for mobile and desktop.  
-- Seamless checkout process.  
+- Seamless checkout process. 
 
 ## Tech Stack  
 
